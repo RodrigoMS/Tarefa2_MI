@@ -21,7 +21,7 @@ namespace Tarefa_CFA
         private void Form1_Load(object sender, EventArgs e)
         {
             LISTA_FILMES.Groups.Add("Grupo de filmes", "Lista de filmes");
-            ALTERAR.Enabled = false;
+            TNOME.Focus();
         }
 
         public List<Filme> ListaFilmes = new List<Filme>();
@@ -30,7 +30,12 @@ namespace Tarefa_CFA
         {
             if (TGENERO.Text == String.Empty || TNOME.Text == String.Empty)
             {
-                MessageBox.Show("É necessário que os campos nome e gênero estejam preenchidos.", "Campo não preenchido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (TNOME.Text == String.Empty)
+                    SetaNome.Visible = true;
+                if (TGENERO.Text == String.Empty)
+                    SetaGenero.Visible = true;
+                LMENSAGEM.Visible = true;
+                LMENSAGEM.Text = "É necessário que os campos nome e gênero estejam preenchidos.";
             }
             else
             {
@@ -85,6 +90,7 @@ namespace Tarefa_CFA
 
                 // Método Limpar
                 LMENSAGEM.Visible = true;
+                LMENSAGEM.Text = "Para atualizar ou excluir dados, de clique duplo em cima do item desejado.";
                 LIMPAR();
             }
         }
@@ -319,6 +325,18 @@ namespace Tarefa_CFA
             TGENERO.Text = "";
             TLOCAL.Clear();
             TNOME.Focus();
+        }
+
+        private void TGENERO_MouseClick(object sender, MouseEventArgs e)
+        {
+            SetaGenero.Visible = false;
+            LMENSAGEM.Visible = false;
+        }
+
+        private void TNOME_MouseClick(object sender, MouseEventArgs e)
+        {
+            SetaNome.Visible = false;
+            LMENSAGEM.Visible = false;
         }
     }
 }

@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup12 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup13 = new System.Windows.Forms.ListViewGroup("Comedia", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup14 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup15 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup16 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup17 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup18 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup19 = new System.Windows.Forms.ListViewGroup("Ficção científica", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup20 = new System.Windows.Forms.ListViewGroup("Pesquisa", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup21 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup22 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup23 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup24 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup25 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup26 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup27 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup28 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup29 = new System.Windows.Forms.ListViewGroup("Ficção científica", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup30 = new System.Windows.Forms.ListViewGroup("Pesquisa", System.Windows.Forms.HorizontalAlignment.Left);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.LISTA_FILMES = new System.Windows.Forms.ListView();
             this.COLUNA_NOME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.COLUNA_GÊNERO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,6 +64,12 @@
             this.DESABILITAR_DATA = new System.Windows.Forms.RadioButton();
             this.LFRASE = new System.Windows.Forms.Label();
             this.LMENSAGEM = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SetaNome = new System.Windows.Forms.PictureBox();
+            this.SetaGenero = new System.Windows.Forms.PictureBox();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SetaNome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SetaGenero)).BeginInit();
             this.SuspendLayout();
             // 
             // LISTA_FILMES
@@ -72,40 +79,40 @@
             this.COLUNA_GÊNERO,
             this.COLUNA_DATA,
             this.COLUNA_LOCAL});
-            listViewGroup11.Header = "Ação";
-            listViewGroup11.Name = "Ação";
-            listViewGroup12.Header = "Aventura";
-            listViewGroup12.Name = "Aventura";
-            listViewGroup13.Header = "Comedia";
-            listViewGroup13.Name = "Comedia";
-            listViewGroup14.Header = "Terror";
-            listViewGroup14.Name = "Terror";
-            listViewGroup15.Header = "Suspense";
-            listViewGroup15.Name = "Suspense";
-            listViewGroup16.Header = "Documentário";
-            listViewGroup16.Name = "Documentário";
-            listViewGroup17.Header = "Infantil";
-            listViewGroup17.Name = "Infantil";
-            listViewGroup18.Header = "Romance";
-            listViewGroup18.Name = "Romance";
-            listViewGroup19.Header = "Ficção científica";
-            listViewGroup19.Name = "Ficção científica";
-            listViewGroup20.Header = "Pesquisa";
-            listViewGroup20.Name = "Pesquisa";
+            listViewGroup21.Header = "Ação";
+            listViewGroup21.Name = "Ação";
+            listViewGroup22.Header = "Aventura";
+            listViewGroup22.Name = "Aventura";
+            listViewGroup23.Header = "Comédia";
+            listViewGroup23.Name = "Comédia";
+            listViewGroup24.Header = "Terror";
+            listViewGroup24.Name = "Terror";
+            listViewGroup25.Header = "Suspense";
+            listViewGroup25.Name = "Suspense";
+            listViewGroup26.Header = "Documentário";
+            listViewGroup26.Name = "Documentário";
+            listViewGroup27.Header = "Infantil";
+            listViewGroup27.Name = "Infantil";
+            listViewGroup28.Header = "Romance";
+            listViewGroup28.Name = "Romance";
+            listViewGroup29.Header = "Ficção científica";
+            listViewGroup29.Name = "Ficção científica";
+            listViewGroup30.Header = "Pesquisa";
+            listViewGroup30.Name = "Pesquisa";
             this.LISTA_FILMES.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup11,
-            listViewGroup12,
-            listViewGroup13,
-            listViewGroup14,
-            listViewGroup15,
-            listViewGroup16,
-            listViewGroup17,
-            listViewGroup18,
-            listViewGroup19,
-            listViewGroup20});
-            this.LISTA_FILMES.Location = new System.Drawing.Point(15, 151);
+            listViewGroup21,
+            listViewGroup22,
+            listViewGroup23,
+            listViewGroup24,
+            listViewGroup25,
+            listViewGroup26,
+            listViewGroup27,
+            listViewGroup28,
+            listViewGroup29,
+            listViewGroup30});
+            this.LISTA_FILMES.Location = new System.Drawing.Point(12, 157);
             this.LISTA_FILMES.Name = "LISTA_FILMES";
-            this.LISTA_FILMES.Size = new System.Drawing.Size(857, 398);
+            this.LISTA_FILMES.Size = new System.Drawing.Size(785, 398);
             this.LISTA_FILMES.TabIndex = 0;
             this.LISTA_FILMES.UseCompatibleStateImageBehavior = false;
             this.LISTA_FILMES.View = System.Windows.Forms.View.Details;
@@ -129,7 +136,7 @@
             // COLUNA_LOCAL
             // 
             this.COLUNA_LOCAL.Text = "Local";
-            this.COLUNA_LOCAL.Width = 339;
+            this.COLUNA_LOCAL.Width = 262;
             // 
             // label1
             // 
@@ -153,6 +160,7 @@
             this.TNOME.Name = "TNOME";
             this.TNOME.Size = new System.Drawing.Size(437, 20);
             this.TNOME.TabIndex = 2;
+            this.TNOME.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TNOME_MouseClick);
             // 
             // TGENERO
             // 
@@ -170,8 +178,9 @@
             "Ficção científica"});
             this.TGENERO.Location = new System.Drawing.Point(505, 45);
             this.TGENERO.Name = "TGENERO";
-            this.TGENERO.Size = new System.Drawing.Size(156, 21);
+            this.TGENERO.Size = new System.Drawing.Size(249, 21);
             this.TGENERO.TabIndex = 3;
+            this.TGENERO.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TGENERO_MouseClick);
             // 
             // TLOCAL
             // 
@@ -183,7 +192,7 @@
             "Não sei aonde estou"});
             this.TLOCAL.Location = new System.Drawing.Point(15, 84);
             this.TLOCAL.Name = "TLOCAL";
-            this.TLOCAL.Size = new System.Drawing.Size(436, 20);
+            this.TLOCAL.Size = new System.Drawing.Size(437, 20);
             this.TLOCAL.TabIndex = 5;
             // 
             // label2
@@ -198,7 +207,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(502, 69);
+            this.label3.Location = new System.Drawing.Point(502, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 7;
@@ -226,7 +235,7 @@
             // EXCLUIR
             // 
             this.EXCLUIR.Enabled = false;
-            this.EXCLUIR.Location = new System.Drawing.Point(262, 112);
+            this.EXCLUIR.Location = new System.Drawing.Point(456, 112);
             this.EXCLUIR.Name = "EXCLUIR";
             this.EXCLUIR.Size = new System.Drawing.Size(75, 23);
             this.EXCLUIR.TabIndex = 10;
@@ -236,7 +245,7 @@
             // 
             // PERQUISA
             // 
-            this.PERQUISA.Location = new System.Drawing.Point(377, 112);
+            this.PERQUISA.Location = new System.Drawing.Point(679, 112);
             this.PERQUISA.Name = "PERQUISA";
             this.PERQUISA.Size = new System.Drawing.Size(75, 23);
             this.PERQUISA.TabIndex = 11;
@@ -246,7 +255,8 @@
             // 
             // ALTERAR
             // 
-            this.ALTERAR.Location = new System.Drawing.Point(141, 112);
+            this.ALTERAR.Enabled = false;
+            this.ALTERAR.Location = new System.Drawing.Point(237, 112);
             this.ALTERAR.Name = "ALTERAR";
             this.ALTERAR.Size = new System.Drawing.Size(75, 23);
             this.ALTERAR.TabIndex = 14;
@@ -257,7 +267,7 @@
             // TDATA
             // 
             this.TDATA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TDATA.Location = new System.Drawing.Point(505, 85);
+            this.TDATA.Location = new System.Drawing.Point(505, 86);
             this.TDATA.Name = "TDATA";
             this.TDATA.Size = new System.Drawing.Size(102, 20);
             this.TDATA.TabIndex = 16;
@@ -287,7 +297,7 @@
             // TDATA_ATE
             // 
             this.TDATA_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TDATA_ATE.Location = new System.Drawing.Point(638, 85);
+            this.TDATA_ATE.Location = new System.Drawing.Point(652, 86);
             this.TDATA_ATE.Name = "TDATA_ATE";
             this.TDATA_ATE.Size = new System.Drawing.Size(102, 20);
             this.TDATA_ATE.TabIndex = 19;
@@ -296,7 +306,7 @@
             // ATE
             // 
             this.ATE.AutoSize = true;
-            this.ATE.Location = new System.Drawing.Point(635, 69);
+            this.ATE.Location = new System.Drawing.Point(684, 70);
             this.ATE.Name = "ATE";
             this.ATE.Size = new System.Drawing.Size(26, 13);
             this.ATE.TabIndex = 20;
@@ -307,7 +317,7 @@
             // 
             this.ABILITAR_DATA.AutoSize = true;
             this.ABILITAR_DATA.Checked = true;
-            this.ABILITAR_DATA.Location = new System.Drawing.Point(505, 115);
+            this.ABILITAR_DATA.Location = new System.Drawing.Point(501, 115);
             this.ABILITAR_DATA.Name = "ABILITAR_DATA";
             this.ABILITAR_DATA.Size = new System.Drawing.Size(80, 17);
             this.ABILITAR_DATA.TabIndex = 21;
@@ -319,7 +329,7 @@
             // DESABILITAR_DATA
             // 
             this.DESABILITAR_DATA.AutoSize = true;
-            this.DESABILITAR_DATA.Location = new System.Drawing.Point(638, 115);
+            this.DESABILITAR_DATA.Location = new System.Drawing.Point(656, 115);
             this.DESABILITAR_DATA.Name = "DESABILITAR_DATA";
             this.DESABILITAR_DATA.Size = new System.Drawing.Size(98, 17);
             this.DESABILITAR_DATA.TabIndex = 22;
@@ -331,10 +341,10 @@
             // LFRASE
             // 
             this.LFRASE.AutoSize = true;
-            this.LFRASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LFRASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LFRASE.Location = new System.Drawing.Point(12, 9);
             this.LFRASE.Name = "LFRASE";
-            this.LFRASE.Size = new System.Drawing.Size(309, 13);
+            this.LFRASE.Size = new System.Drawing.Size(256, 13);
             this.LFRASE.TabIndex = 23;
             this.LFRASE.Text = "Para cadastrar insira os dados e clique em Adicionar.";
             // 
@@ -343,19 +353,53 @@
             this.LMENSAGEM.AutoSize = true;
             this.LMENSAGEM.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LMENSAGEM.ForeColor = System.Drawing.Color.Black;
-            this.LMENSAGEM.Location = new System.Drawing.Point(437, 571);
+            this.LMENSAGEM.Location = new System.Drawing.Point(6, 16);
             this.LMENSAGEM.Name = "LMENSAGEM";
-            this.LMENSAGEM.Size = new System.Drawing.Size(435, 13);
+            this.LMENSAGEM.Size = new System.Drawing.Size(431, 13);
             this.LMENSAGEM.TabIndex = 24;
-            this.LMENSAGEM.Text = "Para atualizar ou excluir dados, de clique duplo em cima do item  desejado.";
+            this.LMENSAGEM.Text = "Para atualizar ou excluir dados, de clique duplo em cima do item desejado.";
             this.LMENSAGEM.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.LMENSAGEM);
+            this.groupBox1.Location = new System.Drawing.Point(15, 561);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(854, 39);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Informação";
+            // 
+            // SetaNome
+            // 
+            this.SetaNome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SetaNome.Image = ((System.Drawing.Image)(resources.GetObject("SetaNome.Image")));
+            this.SetaNome.Location = new System.Drawing.Point(458, 46);
+            this.SetaNome.Name = "SetaNome";
+            this.SetaNome.Size = new System.Drawing.Size(37, 20);
+            this.SetaNome.TabIndex = 26;
+            this.SetaNome.TabStop = false;
+            this.SetaNome.Visible = false;
+            // 
+            // SetaGenero
+            // 
+            this.SetaGenero.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SetaGenero.Image = ((System.Drawing.Image)(resources.GetObject("SetaGenero.Image")));
+            this.SetaGenero.Location = new System.Drawing.Point(760, 46);
+            this.SetaGenero.Name = "SetaGenero";
+            this.SetaGenero.Size = new System.Drawing.Size(37, 20);
+            this.SetaGenero.TabIndex = 27;
+            this.SetaGenero.TabStop = false;
+            this.SetaGenero.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 612);
-            this.Controls.Add(this.LMENSAGEM);
+            this.ClientSize = new System.Drawing.Size(807, 612);
+            this.Controls.Add(this.SetaGenero);
+            this.Controls.Add(this.SetaNome);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LFRASE);
             this.Controls.Add(this.DESABILITAR_DATA);
             this.Controls.Add(this.ABILITAR_DATA);
@@ -377,8 +421,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LISTA_FILMES);
             this.Name = "Form1";
-            this.Text = "Cadastro de filmes Assistidos";
+            this.Text = "Cadastro de filmes assistidos";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SetaNome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SetaGenero)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,6 +459,9 @@
         private System.Windows.Forms.RadioButton DESABILITAR_DATA;
         private System.Windows.Forms.Label LFRASE;
         private System.Windows.Forms.Label LMENSAGEM;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox SetaNome;
+        private System.Windows.Forms.PictureBox SetaGenero;
     }
 }
 
