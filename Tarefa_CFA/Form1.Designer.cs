@@ -374,7 +374,7 @@
             // 
             this.SetaNome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.SetaNome.Image = ((System.Drawing.Image)(resources.GetObject("SetaNome.Image")));
-            this.SetaNome.Location = new System.Drawing.Point(459, 22);
+            this.SetaNome.Location = new System.Drawing.Point(458, 45);
             this.SetaNome.Name = "SetaNome";
             this.SetaNome.Size = new System.Drawing.Size(37, 20);
             this.SetaNome.TabIndex = 26;
