@@ -21,26 +21,30 @@ namespace Tarefa_CFA
         private void Form1_Load(object sender, EventArgs e)
         {
             LISTA_FILMES.Groups.Add("Grupo de filmes", "Lista de filmes");
-            ALTERAR.Enabled = false;
         }
 
         public List<Filme> ListaFilmes = new List<Filme>();
 
         private void ADICIONAR_Click(object sender, EventArgs e)
         {
-            if (TGENERO.Text == String.Empty || TNOME.Text == String.Empty)
+            if (Tgenero.Text == String.Empty || Tnome.Text == String.Empty)
             {
-                MessageBox.Show("É necessário que os campos nome e gênero estejam preenchidos.", "Campo não preenchido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Tnome.Text == String.Empty)
+                    SetaNome.Visible = true;
+                if (Tgenero.Text == String.Empty)
+                    SetaGenero.Visible = true;
+                LFRASE.Visible = true;
+                LFRASE.Text = "É necessário que os campos nome e gênero estejam preenchidos.";
             }
             else
             {
                 //Cria um objeto com referencia a class Filme
                 Filme novoFilme = new Filme();
                 //Atribui os valores digitados ao objeto da classe filme
-                novoFilme.nome = TNOME.Text;
-                novoFilme.genero = TGENERO.Text;
-                novoFilme.data = TDATA.Value;
-                novoFilme.local = TLOCAL.Text;
+                novoFilme.nome = Tnome.Text;
+                novoFilme.genero = Tgenero.Text;
+                novoFilme.data = Tdata.Value;
+                novoFilme.local = Tlocal.Text;
 
                 //Mostra o conteúdo da lista de informações para o listView
                 ListViewItem FILME = new ListViewItem();
@@ -68,23 +72,37 @@ namespace Tarefa_CFA
                     Dicionario.Add(novoFilme.genero,ListaFilmes);
                 }
 
-                
 
-                //// Criar a lista para usar como fonte personalizado para o TextBox - TNOME.  
-                //var COMPLETE = new AutoCompleteStringCollection();
-                //COMPLETE.AddRange(new string[]
-                //        {
-          
-                //        });
 
-                //// Criar e inicializar a caixa de texto.
+                // Criar a lista para usar como fonte personalizado para o TextBox - Tnome.  
+                var Complete = new AutoCompleteStringCollection();
+                Complete.AddRange(new string[]
+                        {
+                            Tnome.Text
+                        });
 
-                //TNOME.AutoCompleteCustomSource = COMPLETE;
-                //TNOME.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                //TNOME.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                // Criar e inicializar a caixa de texto.
+
+                Tnome.AutoCompleteCustomSource = Complete;
+                Tnome.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Tnome.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+                //Criar a lista para usar como fonte persomalizada para o TextBox - Tlocal.
+                Complete = new AutoCompleteStringCollection();
+                Complete.AddRange(new string[]
+                        {
+                            Tlocal.Text
+                        });
+
+                // Criar e inicializar a caixa de texto.
+
+                Tlocal.AutoCompleteCustomSource = Complete;
+                Tlocal.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Tlocal.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
                 // Método Limpar
-                LMENSAGEM.Visible = true;
+                LFRASE.Visible = true;
+                LFRASE.Text = "Para atualizar ou excluir dados, de clique duplo em cima do item desejado.";
                 LIMPAR();
             }
         }
@@ -94,107 +112,110 @@ namespace Tarefa_CFA
         private void LISTA_FILMES_DoubleClick(object sender, EventArgs e)
         {
             // O item selecionado é enviodo para os Text Box
-            ADICIONAR.Enabled = false;
-            EXCLUIR.Enabled = true;
+            Adicionar.Enabled = false;
+            Exclusao.Enabled = true;
+            Alterar.Enabled = true;
+            LFRASE.Text = "Insira ou atualize dados e clique em Alterar. Para excluir basta clicar em Excluir.";
             foreach (ListViewItem item in LISTA_FILMES.SelectedItems)
             {
-                LFRASE.Text = "Insira ou atualize dados e clique em Alterar. Para excluir basta clicar em Excluir.";
-                LMENSAGEM.Visible = false;
-                ALTERAR.Enabled = true;
                 filmeSobAlteracao = new Filme();
                 filmeSobAlteracao.Selecionado = item.Index;
-                TNOME.Text = item.Text;
-                TGENERO.Text = item.SubItems[1].Text;
-                TDATA.Text = item.SubItems[2].Text;
-                TLOCAL.Text = item.SubItems[3].Text;
+                Tnome.Text = item.Text;
+                Tgenero.Text = item.SubItems[1].Text;
+                Tdata.Text = item.SubItems[2].Text;
+                Tlocal.Text = item.SubItems[3].Text;
+                filmeSobAlteracao.genero = Tgenero.Text;
+
+                //Adiciona ao objeto o filme que terá alteração
+                filmeSobAlteracao.nome = Tnome.Text;
+                filmeSobAlteracao.genero = Tgenero.Text;
+                filmeSobAlteracao.data = Tdata.Value;
+                filmeSobAlteracao.local = Tlocal.Text;
             }
         }
 
         private void ALTERAR_Click(object sender, EventArgs e)
         {
+            LFRASE.Visible = false;
             string generoAntigo = String.Empty;
-            string novoGenero = String.Empty;
-            Filme TrocaFilmeGenero = new Filme();
-            bool GeneroTrocado = false;
+            Filme trocaFilmeGenero = new Filme();
+            bool GeneroTrocado = false; 
+
             foreach (KeyValuePair<string, List<Filme>> Procurar in Dicionario)
             {
-                if (Procurar.Key != TGENERO.Text)
+                if (Procurar.Key == filmeSobAlteracao.genero)
                 {
-                    GeneroTrocado = true;
                     foreach (Filme Encontrar in Procurar.Value)
                     {
-                        if (Encontrar.genero == TGENERO.Text)
+                        //Verifica e faz a alteração se caso o item for diferente
+                        if (Encontrar.nome == filmeSobAlteracao.nome)
+                        {
+                            Encontrar.nome = Tnome.Text;
+                            Encontrar.genero = Tgenero.Text;
+                            Encontrar.data = Tdata.Value;
+                            Encontrar.local = Tlocal.Text;
+                        }
+                        if (Encontrar.genero != filmeSobAlteracao.genero)
                         {
                             generoAntigo = Encontrar.genero;
-                            TrocaFilmeGenero.nome = Encontrar.nome;
-                            TrocaFilmeGenero.genero = TGENERO.Text;
-                            TrocaFilmeGenero.data = Encontrar.data;
-                            TrocaFilmeGenero.local = Encontrar.local;
-                            Encontrar.genero = TGENERO.Text;
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (Filme AlterarFilme in Procurar.Value)
-                    {
-                        if (AlterarFilme.nome == TNOME.Text)
-                        {
-                            AlterarFilme.nome = TNOME.Text;
-                            AlterarFilme.genero = TGENERO.Text;
-                            AlterarFilme.data = TDATA.Value;
-                            AlterarFilme.local = TLOCAL.Text;
+                            //Encontrar.genero = Tgenero.Text;
+                            trocaFilmeGenero.nome = Encontrar.nome;
+                            trocaFilmeGenero.genero = Tgenero.Text;
+                            trocaFilmeGenero.data = Encontrar.data;
+                            trocaFilmeGenero.local = Encontrar.local;
+                            GeneroTrocado = true;   
                         }
                     }
                 }
             }
 
+            // Se o genero foi alterado ele entrará nesta condição
             if (GeneroTrocado == true)
             {
-                if (Dicionario.ContainsKey(TGENERO.Text))
+                if (Dicionario.ContainsKey(trocaFilmeGenero.genero))
                 {
-                    ListaFilmes.Add(TrocaFilmeGenero);
-                    Dicionario[TGENERO.Text] = ListaFilmes;
+                    ListaFilmes.Add(trocaFilmeGenero);
+                    Dicionario[trocaFilmeGenero.genero] = ListaFilmes;
                 }
                 else
                 {
                     ListaFilmes = new List<Filme>();
-                    ListaFilmes.Add(TrocaFilmeGenero);
-                    Dicionario.Add(TGENERO.Text,ListaFilmes);
+                    ListaFilmes.Add(trocaFilmeGenero);
+                    Dicionario.Add(trocaFilmeGenero.genero,ListaFilmes);
                 }
 
                 //exclusão do Item selecionado
-                ListaFilmes = new List<Filme>();
+                List<Filme> listaSemOFilme = new List<Filme>();
                 foreach (KeyValuePair<string, List<Filme>> Excluir in Dicionario)
                 {
                     if (Excluir.Key == generoAntigo)
                     {
                         foreach (Filme ExcluirFilme in Excluir.Value)
                         {
-                            if (ExcluirFilme.genero != TrocaFilmeGenero.genero)
+                            if (ExcluirFilme.genero != trocaFilmeGenero.genero)
                             {
-                                ListaFilmes.Add(ExcluirFilme);
+                                listaSemOFilme.Add(ExcluirFilme);
                             }
                         }
                     }
                 }
                 Dicionario.Remove(generoAntigo);
-                Dicionario.Add(generoAntigo,ListaFilmes);
+                Dicionario.Add(generoAntigo, listaSemOFilme);
             }
 
             foreach (ListViewItem item in LISTA_FILMES.SelectedItems)
             {
-                item.Text = TNOME.Text;
-                item.SubItems[1].Text = TGENERO.Text;
-                item.SubItems[2].Text = TDATA.Text;
-                item.SubItems[3].Text = TLOCAL.Text;
+                item.Text = Tnome.Text;
+                item.SubItems[1].Text = Tgenero.Text;
+                item.SubItems[2].Text = Tdata.Text;
+                item.SubItems[3].Text = Tlocal.Text;
 
-                item.Group = LISTA_FILMES.Groups[TGENERO.Text];
+                item.Group = LISTA_FILMES.Groups[Tgenero.Text];
             }
-            ADICIONAR.Enabled = true;
-            ALTERAR.Enabled = false;
-            LMENSAGEM.Visible = true;
-            EXCLUIR.Enabled = false;
+            Adicionar.Enabled = true;
+            Alterar.Enabled = false;
+            LFRASE.Visible = true;
+            Exclusao.Enabled = false;
             LFRASE.Text = "Para cadastrar insira os dados e clique em Adicionar";
             LIMPAR();
         }
@@ -204,31 +225,30 @@ namespace Tarefa_CFA
             ListaFilmes = new List<Filme>();
             foreach (KeyValuePair<string, List<Filme>> Excluir in Dicionario)
             {
-                if (Excluir.Key == TGENERO.Text)
+                if (Excluir.Key == Tgenero.Text)
                 {
                     foreach (Filme ExcluirFilme in Excluir.Value)
                     {
-                        if (ExcluirFilme.nome != TNOME.Text)
+                        if (ExcluirFilme.nome != Tnome.Text)
                         {
                             ListaFilmes.Add(ExcluirFilme);
                         }
                     }
                 }
             }
-            Dicionario.Remove(TGENERO.Text);
-            Dicionario.Add(TGENERO.Text,ListaFilmes);
+            Dicionario.Remove(Tgenero.Text);
+            Dicionario.Add(Tgenero.Text,ListaFilmes);
             foreach (ListViewItem item in LISTA_FILMES.SelectedItems)
             {
-                if (item.Text == TNOME.Text)
+                if (item.Text == Tnome.Text)
                 {
                     item.Remove();
                 }
             }
-            ADICIONAR.Enabled = true;
-            ALTERAR.Enabled = false;
-            EXCLUIR.Enabled = false;
-            LMENSAGEM.Visible = true;
-            LFRASE.Text = "Para cadastrar insira os dados e clique em Adicionar";
+            Adicionar.Enabled = true;
+            Alterar.Enabled = false;
+            Exclusao.Enabled = false;
+            LFRASE.Text = "Para cadastrar insira os dados e clique em Adicionar.";
             LIMPAR();
         }
 
@@ -241,14 +261,14 @@ namespace Tarefa_CFA
             bool NaoEncontrado = true;
             foreach(KeyValuePair<string,List<Filme>> pesq in Dicionario)
             {
-                if(pesq.Key == TGENERO.Text || TGENERO.Text == "Todos os gêneros")
+                if(pesq.Key == Tgenero.Text || Tgenero.Text == "Todos os gêneros")
                 {
                     foreach (Filme Pesquisado in pesq.Value)
                     {
-                        if ((Pesquisado.nome == TNOME.Text || TNOME.Text == "")
-                            && (Pesquisado.genero == TGENERO.Text || TGENERO.Text == "Todos os gêneros")
-                            && (ABILITAR_DATA.Checked == false || (Pesquisado.data >= TDATA.Value && Pesquisado.data <= TDATA_ATE.Value))
-                            && (Pesquisado.local == TLOCAL.Text || TLOCAL.Text == ""))
+                        if ((Pesquisado.nome == Tnome.Text || Tnome.Text == "")
+                            && (Pesquisado.genero == Tgenero.Text || Tgenero.Text == "Todos os gêneros")
+                            && (AbilitarData.Checked == false || (Pesquisado.data >= Tdata.Value && Pesquisado.data <= Tdata_Ate.Value))
+                            && (Pesquisado.local == Tlocal.Text || Tlocal.Text == ""))
                         {
                             NaoEncontrado = false;
                             Selecionados.Add(Pesquisado);
@@ -280,45 +300,68 @@ namespace Tarefa_CFA
         {
             //Abilita e desabilita botões dentro do form
             LFRASE.Text = "Defina os dados para a pesquisa e clique em Perquisar";
-            ALTERAR.Visible = false;
-            ADICIONAR.Visible = false;
-            EXCLUIR.Visible = false;
+            Alterar.Visible = false;
+            Adicionar.Visible = false;
+            Exclusao.Visible = false;
             PERQUISA.Visible = false;
-            PESQUISAR.Visible = true;
-            FECHAR_PESQUISA.Visible = true;
-            TDATA_ATE.Visible = true;
+            Pesquisa.Visible = true;
+            FecharPesquisa.Visible = true;
+            Tdata_Ate.Visible = true;
             ATE.Visible = true;
-            ABILITAR_DATA.Visible = true;
-            DESABILITAR_DATA.Visible = true;
-            TGENERO.Items.Add("Todos os gêneros");
-            LMENSAGEM.Visible = false;
+            AbilitarData.Visible = true;
+            DesabilitarData.Visible = true;
+            Tgenero.Items.Add("Todos os gêneros");
+            AbilitarData.Checked = true;
         }
 
         private void FECHAR_PESQUISA_Click(object sender, EventArgs e)
         {
             //Abilita e desabilita botões dentro do form
             LFRASE.Text = "Para cadastrar insira os dados e clique em Adicionar";
-            ALTERAR.Visible = true;
-            ADICIONAR.Visible = true;
-            EXCLUIR.Visible = true;
+            Alterar.Visible = true;
+            Adicionar.Visible = true;
+            Exclusao.Visible = true;
             PERQUISA.Visible = true;
-            PESQUISAR.Visible = false;
-            FECHAR_PESQUISA.Visible = false;
-            TDATA_ATE.Visible = false;
+            Pesquisa.Visible = false;
+            FecharPesquisa.Visible = false;
+            Tdata_Ate.Visible = false;
             ATE.Visible = false;
-            ABILITAR_DATA.Visible = false;
-            DESABILITAR_DATA.Visible = false;
-            TGENERO.Items.Remove("Todos os gêneros");
-            LMENSAGEM.Visible = true;
+            AbilitarData.Visible = false;
+            DesabilitarData.Visible = false;
+            Tgenero.Items.Remove("Todos os gêneros");
+            LFRASE.Visible = true;
+            Tdata.Enabled = true;
         }
 
         public void LIMPAR()
         {
             //Limpa todos os TextBox e posiciona o cursor no TexBox nome
-            TNOME.Clear();
-            TGENERO.Text = "";
-            TLOCAL.Clear();
-            TNOME.Focus();
+            Tnome.Clear();
+            Tgenero.Text = "";
+            Tlocal.Clear();
+            Tnome.Focus();
+        }
+
+        private void TGENERO_MouseClick(object sender, MouseEventArgs e)
+        {
+            SetaGenero.Visible = false;
+        }
+
+        private void TNOME_MouseClick(object sender, MouseEventArgs e)
+        {
+            SetaNome.Visible = false;
+        }
+
+        private void DesabilitarData_CheckedChanged(object sender, EventArgs e)
+        {
+            Tdata_Ate.Enabled = false;
+            Tdata.Enabled = false;
+        }
+
+        private void AbilitarData_CheckedChanged(object sender, EventArgs e)
+        {
+            Tdata_Ate.Enabled = true;
+            Tdata.Enabled = true;
         }
     }
 }
