@@ -131,6 +131,7 @@ namespace Tarefa_CFA
                 filmeSobAlteracao.genero = Tgenero.Text;
                 filmeSobAlteracao.data = Tdata.Value;
                 filmeSobAlteracao.local = Tlocal.Text;
+
             }
         }
 
