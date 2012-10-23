@@ -101,8 +101,6 @@ namespace Tarefa_CFA
                 Tlocal.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
                 // Método Limpar
-                LFRASE.Visible = true;
-                LFRASE.Text = "Para atualizar ou excluir dados, de clique duplo em cima do item desejado.";
                 LIMPAR();
             }
         }
@@ -296,11 +294,11 @@ namespace Tarefa_CFA
                 LISTA_FILMES.Items.Add(FILMEP);
             }
         }
-
+    
         private void PERQUISA_Click(object sender, EventArgs e)
         {
             //Abilita e desabilita botões dentro do form
-            LFRASE.Text = "Defina os dados para a pesquisa e clique em Perquisar";
+            LFRASE.Text = "Defina os dados para a pesquisa e clique em Pesquisar";
             Alterar.Visible = false;
             Adicionar.Visible = false;
             Exclusao.Visible = false;
@@ -318,6 +316,8 @@ namespace Tarefa_CFA
         private void FECHAR_PESQUISA_Click(object sender, EventArgs e)
         {
             //Abilita e desabilita botões dentro do form
+            Tgenero.Text = "Todos os gêneros";
+            PESQUISAR_Click(e, e);
             LFRASE.Text = "Para cadastrar insira os dados e clique em Adicionar";
             Alterar.Visible = true;
             Adicionar.Visible = true;
@@ -350,6 +350,8 @@ namespace Tarefa_CFA
 
         private void TNOME_MouseClick(object sender, MouseEventArgs e)
         {
+            LFRASE.Visible = true;
+            LFRASE.Text = "Para atualizar ou excluir dados, de clique duplo em cima do item desejado.";
             SetaNome.Visible = false;
         }
 
